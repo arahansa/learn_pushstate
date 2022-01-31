@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<button type="button" class="evt" data-page="1">페이지1</button>
+<button type="button" class="evt" data-page="2">페이지2</button>
+<button type="button" class="evt" data-page="3">페이지3</button>
+<button type="button" class="evt" data-page="4">페이지4</button>
+<button type="button" class="evt" data-page="5">페이지5</button>
+<a href="sample.html" >
+    <button type="button">sample 페이지 이동</button>
+</a>
+
+<div id="target">첫 페이지입니다.</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(".evt").click((e)=>{
+        const page = $(e.currentTarget).data('page');
+        console.log('이벤트!' , page);
+        $("#target").html("내용"+page);
+        history.pushState({current : $("#target").html()}, null, location.origin + location.pathname+"?page="+page)
+    });
+
+    window.addEventListener('popstate', function(event) {
+        console.log('popstate event :', event);
+        $("#target").html(event.state.current);
+    });
+</script>
+</body>
+</html>

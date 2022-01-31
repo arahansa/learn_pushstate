@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+sample page
+
+<a href="index.html" >
+    <button type="button" >index 페이지 이동</button>
+</a>
+
+<script>
+    window.addEventListener('popstate', function(event) {
+        console.log('popstate event sample :', event);
+    });
+</script>
+</body>
+</html>
